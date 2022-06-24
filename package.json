@@ -5,15 +5,17 @@
   "main": "index.js",
   "author": "Citeline",
   "scripts": {
-    "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./report/report.json --require src/test/steps --tags @automated",
-    "test": "npm run cucumber src/test/features/**/*.feature",
-    "report": "node report/reporterOptions.js"
+    "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./report/report.json --require src/test/steps --tags @automated3",
+    "test": "npm run cucumber src/test/features/**/*.feature || (exit 0)",
+    "report": "node report/reporterOptions.js",
+    "test_report": "npm run test && npm run report"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/informa-ibi/pharma-api-automation.git"
   },
   "dependencies": {
+    "chai-things": "^0.2.0",
     "informa_framework": "github:informa-pharma/informa_framework"
   }
 }
