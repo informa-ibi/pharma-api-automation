@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "Citeline",
   "scripts": {
-    "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./report/report.json --require src/test/steps --tags @automated3",
+    "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./report/report.json --require src/test/steps --tags @automated",
     "test": "npm run cucumber src/test/features/**/*.feature || (exit 0)",
     "report": "node report/reporterOptions.js",
     "test_report": "npm run test && npm run report"

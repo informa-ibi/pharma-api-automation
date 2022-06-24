@@ -2,12 +2,11 @@ const { When, Then } = require("@cucumber/cucumber");
 const expectChai = require("chai").expect;
 const _ = require("lodash");
 const commonFunctions = require("../../util/commonUtils");
-const feedEntityEndpointChangesSinceQuery = require("../../constants/apiEndpoints").feedEntityEndpointChangesSinceQuery;
-const feedEntityEndpointChangesCountSinceQuery = require("../../constants/apiEndpoints").feedEntityEndpointChangesCountSinceQuery;
-const datesArray = require("../../constants/dates").datesArray;
-const entities = require("../../constants/entities").entities;
-
-const numberOfDates = 1;
+const feedEntityEndpointChangesSinceQuery = require("../../constants/apiEndpoints").FEED_ENTITY_ENDPOINT_CHANGES_SINCE_QUERY
+const feedEntityEndpointChangesCountSinceQuery = require("../../constants/apiEndpoints").FEED_ENTITY_ENDPOINT_CHANGES_COUNT_SINCE_QUERY;
+const datesArray = require("../../constants/dates").DATES_ARRAY;
+const numberOfDates = require("../../constants/dates").NUMBER_OF_DATES;
+const entities = require("../../constants/entities").ENTITIES;
 
 When(/^Send a request to '(.*)' entity to changes endpoint with since query$/, async (entity) => {
   this.entity = entity;

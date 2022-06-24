@@ -3,12 +3,11 @@ const chai = require("chai");
 chai.should();
 const expectChai = chai.expect;
 chai.use(require('chai-things'));
-const searchEntityEndpoint = require("../../constants/apiEndpoints").searchEntityEndpoint;
+const deleteWildcardSearchingSymbol = require("../../util/commonUtils").deleteWildcardSearchingSymbol;
+const searchEntityEndpoint = require("../../constants/apiEndpoints").SEARCH_ENTITY_ENDPOINT;
 const trialSearchData = require("../../testData/searchBodyApi/trialApiSearchBody");
 const drugSearchData = require("../../testData/searchBodyApi/drugSearchBody");
 const organizationSearchData = require("../../testData/searchBodyApi/organizationSearchBody");
-
-const arrayTypeValue = 'array';
 
 When(/^Send a POST request to trial entity with '(.*)' search body$/, async (conditional) => {
   const url = searchEntityEndpoint('trial');
@@ -46,20 +45,20 @@ Then(/^Check the result for '(.*)' simple search body in the response body$/, as
     case "Is":
       const isKey = this.postSearchData.Is.name;
       const isStartValue = this.postSearchData.Is.value;
-      expectChai(this.responseBodyItems).to.be.an(arrayTypeValue, "Response items should be an array.");
+      expectChai(this.responseBodyItems).to.be.an('array', "Response items should be an array.");
       expectChai(this.responseBodyItems).to.have.all.property(isKey, isStartValue, `The values for the key [${isKey}] should be the same for the value - [${isStartValue}]`);
       break;
     case "IsNot":
       const isNotKey = this.postSearchData.IsNot.name;
       const isNotStartValue = this.postSearchData.IsNot.value;
-      expectChai(this.responseBodyItems).to.be.an(arrayTypeValue, "Response items should be an array.");
+      expectChai(this.responseBodyItems).to.be.an('array', "Response items should be an array.");
       expectChai(this.responseBodyItems, `All items should have this key - [${isNotKey}]`).to.have.all.property(isNotKey);
       expectChai(this.responseBodyItems).to.not.have.all.property(isNotKey, isNotStartValue, `The values for the key [${isNotKey}] should not be equal to the value - [${isNotStartValue}]`);
       break;
     case "IsOnly":
       const isOnlyKey = this.postSearchData.IsOnly.name;
       const isOnlyStartValue = this.postSearchData.IsOnly.value;
-      expectChai(this.responseBodyItems).to.be.an(arrayTypeValue, "Response items should be an array.");
+      expectChai(this.responseBodyItems).to.be.an('array', "Response items should be an array.");
       const tempArray = [];
       tempArray.push(isOnlyStartValue);
       expectChai(this.responseBodyItems).to.have.all.deep.property(isOnlyKey, tempArray, `The values for the key [${isOnlyKey}] should be the same for the value - [${tempArray}]`);
@@ -67,7 +66,7 @@ Then(/^Check the result for '(.*)' simple search body in the response body$/, as
     case "GreaterThan":
       const gtKey = this.postSearchData.gt.name;
       const gtStartValue = this.postSearchData.gt.value;
-      expectChai(this.responseBodyItems).to.be.an(arrayTypeValue, "Response items should be an array.");
+      expectChai(this.responseBodyItems).to.be.an('array', "Response items should be an array.");
       expectChai(this.responseBodyItems, `All objects in the array should have the following key - [${gtKey}]`).to.have.all.property(gtKey);
       const gtValueArrayByKey = this.responseBodyItems.map(a => a[`${gtKey}`]);
       expectChai(gtValueArrayByKey).all.be.gt(gtStartValue, `The values for the key [${gtKey}] should be the greater then for the value - [${gtStartValue}]`);
@@ -121,9 +120,3 @@ Then(/^Check the result for '(.*)' simple search body in the response body$/, as
       break;
   }
 });
-
-
-function deleteWildcardSearchingSymbol(str)
-{
-  return str.replace('*', "");
-}

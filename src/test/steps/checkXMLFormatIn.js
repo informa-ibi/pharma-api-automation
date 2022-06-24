@@ -3,8 +3,8 @@ var chaiXml = require("chai-xml");
 var chai = require("chai");
 chai.use(chaiXml);
 const expectChai = chai.expect;
-const entities = require("../../constants/entities").entities;
-const feedEntityEndpoint = require("../../constants/apiEndpoints").feedEntityEndpoint;
+const entities = require("../../constants/entities").ENTITIES;
+const feedEntityEndpoint = require("../../constants/apiEndpoints").FEED_ENTITY_ENDPOINT;
 
 When(/^Send request with 'accept xml header' to '(.*)' entity common endpoint$/, async (entity) => {
   const url = feedEntityEndpoint(entities[entity]);

@@ -1,7 +1,7 @@
-const defaultCucumberTime = 100000;
-const longRequestExecutionTime = 80000;
+const DEFAULT_CUCUMBER_TIME  = 100000;
+const LONG_REQUEST_EXECUTION_TIME = 80000;
 
 module.exports = {
-  defaultCucumberTime,
-  longRequestExecutionTime,
+  DEFAULT_CUCUMBER_TIME ,
+  LONG_REQUEST_EXECUTION_TIME,
 };

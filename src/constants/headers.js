@@ -1,7 +1,7 @@
-const jsonHeaders = { Accept: "application/json" };
-const xmlHeaders = { Accept: "application/xml" };
+const JSON_HEADERS = { Accept: "application/json" };
+const XML_HEADERS = { Accept: "application/xml" };
 
 module.exports = {
-  jsonHeaders,
-  xmlHeaders,
+  JSON_HEADERS,
+  XML_HEADERS,
 };

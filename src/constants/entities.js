@@ -1,4 +1,4 @@
-const entities = {
+const ENTITIES = {
   trial: "trial",
   investigator: "investigator",
   organization: "organization",
@@ -10,5 +10,5 @@ const entities = {
 };
 
 module.exports = {
-  entities,
+  ENTITIES,
 };

@@ -1,7 +1,7 @@
 const { When, Then } = require("@cucumber/cucumber");
 const expectChai = require("chai").expect;
-const entities = require("../../constants/entities").entities;
-const feedEntityCountEndpoint = require("../../constants/apiEndpoints").feedEntityCountEndpoint;
+const entities = require("../../constants/entities").ENTITIES;
+const feedEntityCountEndpoint = require("../../constants/apiEndpoints").FEED_ENTITY_COUNT_ENDPOINT;
 const PostgresUtil = require("informa_framework").utils.PostgresUtils;
 const dbName = require("../../environment/PGDataBase").postGresDbConfig.dbName;
 const commonQuery = require("../../testData/postgreSqlQueries").commonQuery;

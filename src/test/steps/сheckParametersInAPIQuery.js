@@ -2,9 +2,9 @@ const { When, Then } = require("@cucumber/cucumber");
 const expectChai = require("chai").expect;
 const _ = require("lodash");
 const commonFunctions = require("../../util/commonUtils");
-const feedEntityEndpointFieldsQuery = require("../../constants/apiEndpoints").feedEntityEndpointFieldsQuery;
+const feedEntityEndpointFieldsQuery = require("../../constants/apiEndpoints").FEED_ENTITY_ENDPOINT_FIELDS_QUERY;
 const fields = require("../../testData/fields/fields");
-const entities = require("../../constants/entities").entities;
+const entities = require("../../constants/entities").ENTITIES;
 
 When(/^Send a request to '(.*)' entity specifying '(.*)' random fields in the query$/, async (entity, fieldsCount) => {
   const queryParametersForRequest = commonFunctions.getMultipleRandom(fields.queryFields[entity], fieldsCount);

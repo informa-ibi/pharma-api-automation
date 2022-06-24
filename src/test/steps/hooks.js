@@ -8,7 +8,7 @@ const headers = require("../../constants/headers");
 
 const { setDefaultTimeout, After, Before, BeforeAll, AfterAll } = require("@cucumber/cucumber");
 
-setDefaultTimeout(timeouts.defaultCucumberTime);
+setDefaultTimeout(timeouts.DEFAULT_CUCUMBER_TIME);
 
 BeforeAll(async () => {
   $authCommonAPIClient = new APIUtils(env.identityUrl.url);
@@ -21,12 +21,12 @@ BeforeAll(async () => {
 
   const params = APIUtils.convert_x_www_form_urlencoded_toString(data);
   const login_config = { timeout: 10000, headers: { Authorization: `Basic ${env.identityUrl.basicAuthToken}` } };
-  const response = await $authCommonAPIClient.postRequest(endpoints.authTokenEndpoint, params, login_config);
+  const response = await $authCommonAPIClient.postRequest(endpoints.AUTH_TOKEN_ENDPOINT, params, login_config);
   const access_token = await response.data.access_token;
 
   $commonAuthHeader = { Authorization: `Bearer ${access_token}` };
   $firstCommonAPIClient = new APIUtils(env.hostUrl, $commonAuthHeader);
-  $xmlCommonAPIClient = new APIUtils(env.hostUrl, { ...$commonAuthHeader, ...headers.xmlHeaders });
+  $xmlCommonAPIClient = new APIUtils(env.hostUrl, { ...$commonAuthHeader, ...headers.XML_HEADERS });
 
   await PostgresUtil.initConnection(configDB);
 });

@@ -1,4 +1,4 @@
-@automated2
+@automated
 Feature: Feed changes endpoint with since query
 
     Scenario Outline: Send a request to ['<entity>'] and make sure that the status code is correct and all the fields specified in the request are in the response body
