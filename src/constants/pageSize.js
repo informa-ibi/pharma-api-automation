@@ -1,7 +1,7 @@
-const defaultNumberOfElementsInTheResponse = 100;
-const maxNumberOfElementsInTheResponse = 2500;
+const DEFAULT_NUMBER_OF_ELEMENTS_IN_THE_RESPONSE = 100;
+const MAX_NUMBER_OF_ELEMENTS_IN_THE_RESPONSE = 2500;
 
 module.exports = {
-  defaultNumberOfElementsInTheResponse,
-  maxNumberOfElementsInTheResponse,
+  DEFAULT_NUMBER_OF_ELEMENTS_IN_THE_RESPONSE,
+  MAX_NUMBER_OF_ELEMENTS_IN_THE_RESPONSE,
 };

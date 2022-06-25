@@ -1,6 +1,6 @@
 const searchBody = {
   Is: {
-    is: {
+    Is: {
       value: "II",
       name: "trialPhase",
     },
@@ -11,13 +11,19 @@ const searchBody = {
       name: "trialPhase",
     },
   },
-  /*IsOnly:        {
+  IsOnly: {
+    IsOnly: {
+      value: "randomized",
+      name: "trialStudyKeywords",
+    },
+  },
+   /*IsOnly:        {
         "IsOnly": {
             "value": "II",
             "name": "trialPhase"
         }
     },*/
-    GreaterThan: {
+  GreaterThan: {
     gt: {
       value: 159688,
       name: "trialId",
@@ -36,7 +42,7 @@ const searchBody = {
     },
   },
   LessThanOrEqualTo: {
-    lt: {
+    lte: {
       value: 27,
       name: "trialId",
     },
@@ -50,8 +56,8 @@ const searchBody = {
   },
   Contains: {
     contains: {
-      value: "A Multicenter*",
-      name: "trialtitle",
+      value: "Multicenter*",
+      name: "trialTitle",
     },
   },
   NotContains: {

@@ -1,5 +1,5 @@
 @automated
-Feature: Feed endpoint with parameters  in query
+Feature: Feed endpoint with parameters in query
 
   Scenario Outline: Send a request to ['<entity>'] and make sure that the status code is correct and all the fields specified in the request are in the response body
     When Send a request to '<entity>' entity specifying '<count>' random fields in the query
