@@ -1,18 +1,17 @@
 const { When, Then } = require("@cucumber/cucumber");
 const expectChai = require("chai").expect;
-const entities = require("../../constants/entities").ENTITIES;
-const feedEntityCountEndpoint = require("../../constants/apiEndpoints").FEED_ENTITY_COUNT_ENDPOINT;
+const { ENTITIES } = require("../../constants/entities");
+const { FEED_ENTITY_COUNT_ENDPOINT } = require("../../constants/apiEndpoints");
 const PostgresUtil = require("informa_framework").utils.PostgresUtils;
 const dbName = require("../../environment/PGDataBase").postGresDbConfig.dbName;
-const commonQuery = require("../../testData/postgreSqlQueries").commonQuery;
-const getRowsCountFromTable = require("../../testData/postgreSqlQueries").getRowsCountFromTable;
+const { getRowsCountFromTable, commonQuery } = require("../../testData/postgreSqlQueries");
 const utils = require("../../util/commonUtils");
 
-const maximumDifferenceBetweenValuesInPercent = 1;
+const MAXIMUM_DIFFERENCE_BETWEEN_VALUES_IN_PERCENT = 1;
 
 When(/^Send request to '(.*)' entity count endpoint$/, async (entity) => {
-  const url = feedEntityCountEndpoint(entities[entity]);
-  const response = await $firstCommonAPIClient.getRequest(url);
+  const requestUrl = FEED_ENTITY_COUNT_ENDPOINT(ENTITIES[entity]);
+  const response = await $firstCommonAPIClient.getRequest(requestUrl);
   $statusCode = response.status;
   this.dataCount = response.data.data.count;
 });
@@ -25,7 +24,7 @@ When(/^Get the number of records for an '(.*)' entity from the PG database$/, as
 
 Then(/^The count of items in the API and database differs by no more than 1 percent for the entity - '(.*)'$/, async (entity) => {
   expectChai(utils.getThePercentageDifferenceBetween2Numbers(this.dataCount, this.expectedCountFromDB)).to.lessThanOrEqual(
-    maximumDifferenceBetweenValuesInPercent,
-    `Count of items for the response API for ${entity} and their number in the database should not differ more than ${maximumDifferenceBetweenValuesInPercent} percent`
+    MAXIMUM_DIFFERENCE_BETWEEN_VALUES_IN_PERCENT,
+    `Count of items for the response API for ${entity} and their number in the database should not differ more than ${MAXIMUM_DIFFERENCE_BETWEEN_VALUES_IN_PERCENT} percent`
   );
 });

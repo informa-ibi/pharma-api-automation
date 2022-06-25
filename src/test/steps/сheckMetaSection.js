@@ -2,12 +2,12 @@ const { When, Then } = require("@cucumber/cucumber");
 const chai = require("chai");
 const expectChai = chai.expect;
 chai.use(require("chai-json-schema-ajv"));
-const entities = require("../../constants/entities").ENTITIES;
-const feedEntityEndpoint = require("../../constants/apiEndpoints").FEED_ENTITY_ENDPOINT;
-const jsonSchemaForMetaSection = require("../../testData/schemes/meta").jsonSchemaForMetaSection;
+const { ENTITIES } = require("../../constants/entities");
+const { FEED_ENTITY_ENDPOINT } = require("../../constants/apiEndpoints");
+const { jsonSchemaForMetaSection } = require("../../testData/schemes/meta");
 
 When(/^Send request to '(.*)' entity common endpoint$/, async (entity) => {
-  const url = feedEntityEndpoint(entities[entity]);
+  const url = FEED_ENTITY_ENDPOINT(ENTITIES[entity]);
   const response = await $firstCommonAPIClient.getRequest(url);
   $statusCode = response.status;
   this.data = response.data;

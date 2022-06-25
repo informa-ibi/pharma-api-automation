@@ -1,15 +1,15 @@
 const { When, Then } = require("@cucumber/cucumber");
 const expectChai = require("chai").expect;
 const _ = require("lodash");
-const commonFunctions = require("../../util/commonUtils");
-const feedEntityEndpointFieldsQuery = require("../../constants/apiEndpoints").FEED_ENTITY_ENDPOINT_FIELDS_QUERY;
+const { getMultipleRandom } = require("../../util/commonUtils");
+const { FEED_ENTITY_ENDPOINT_FIELDS_QUERY } = require("../../constants/apiEndpoints");
 const fields = require("../../testData/fields/fields");
-const entities = require("../../constants/entities").ENTITIES;
+const { ENTITIES } = require("../../constants/entities");
 
 When(/^Send a request to '(.*)' entity specifying '(.*)' random fields in the query$/, async (entity, fieldsCount) => {
-  const queryParametersForRequest = commonFunctions.getMultipleRandom(fields.queryFields[entity], fieldsCount);
+  const queryParametersForRequest = getMultipleRandom(fields.queryFields[entity], fieldsCount);
   this.expectedItemsParameters = [...queryParametersForRequest, ...fields.commonFields];
-  const url = feedEntityEndpointFieldsQuery(entities[entity], queryParametersForRequest.toString());
+  const url = FEED_ENTITY_ENDPOINT_FIELDS_QUERY(ENTITIES[entity], queryParametersForRequest.toString());
   const response = await $firstCommonAPIClient.getRequest(url);
   $statusCode = response.status;
   this.responseBody = response.data.items;
@@ -25,5 +25,5 @@ Then(/^Check that the fields specified in the query are present in the body of t
       fieldsMissingInTheResponseBody.push(diff);
     }
   }
-  expectChai( fieldsMissingInTheResponseBody.length).to.equal(0, `The fields specified in the query should be in the response body : ${fieldsMissingInTheResponseBody.toString()}`);
+  expectChai(fieldsMissingInTheResponseBody.length).to.equal(0, `The fields specified in the query should be in the response body : ${fieldsMissingInTheResponseBody.toString()}`);
 });
