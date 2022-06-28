@@ -4,8 +4,8 @@ const ENVIRONMENT = process.env.ENVIRONMENT || "prod";
 
 const options = {
   theme: "bootstrap",
-  jsonFile: "./report/report.json",
-  output: "./report/report.html",
+  jsonFile: "./reports/report.json",
+  output: "./reports/report.html",
   reportSuiteAsScenarios: true,
   scenarioTimestamp: true,
   launchReport: false,

@@ -17,14 +17,13 @@ function replaceTheLineBreakCharactersWithASpace(string) {
   return string.replace(/\r?\n|\r/g, " ");
 }
 
-function deleteWildcardSearchingSymbol(str)
-{
-  return str.replace('*', "");
+function deleteWildcardSearchingSymbol(str) {
+  return str.replace("*", "");
 }
 
 module.exports = {
   getMultipleRandom,
   getThePercentageDifferenceBetween2Numbers,
   replaceTheLineBreakCharactersWithASpace,
-  deleteWildcardSearchingSymbol
+  deleteWildcardSearchingSymbol,
 };

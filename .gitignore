@@ -107,6 +107,6 @@ dist
 .tern-port
 
 # Test report 
-report/screenshots
-report/*.html
-report/*.json
+reports/screenshots
+reports/*.html
+reports/*.json

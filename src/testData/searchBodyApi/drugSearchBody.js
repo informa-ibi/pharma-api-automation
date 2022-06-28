@@ -1,74 +1,74 @@
 const searchBody = {
+  Is: {
     Is: {
-      Is: {
-        value: "NonClinicalTrials.gov",
-        name: "drugSource",
-      },
+      value: "NonClinicalTrials.gov",
+      name: "drugSource",
     },
+  },
+  IsNot: {
     IsNot: {
-      IsNot: {
-        value: "No Development Reported",
-        name: "originatorStatus",
-      },
+      value: "No Development Reported",
+      name: "originatorStatus",
     },
-    /*IsOnly: { - does not work!
+  },
+  /*IsOnly: { - does not work!
       IsOnly: {
         value: "HANP",
         name: "drugNameSynonyms",
       },
     },*/
+  IsOnly: {
     IsOnly: {
-        IsOnly: {
-          value:"Injectable",
-          name:"deliveryRoutes"
-        },
-      },
-    GreaterThan: {
-      gt: {
-        value: 185,
-        name: "drugId",
-      },
+      value:"Injectable",
+      name:"deliveryRoutes"
     },
-    GreaterThanOrEqualTo: {
-      gte: {
-        value: 628.557,
-        name: "molecularWeight",
-      },
+  },
+  GreaterThan: {
+    gt: {
+      value: 185,
+      name: "drugId",
     },
-    LessThan: {
-      lt: {
-        value: 107,
-        name: "drugId",
-      },
+  },
+  GreaterThanOrEqualTo: {
+    gte: {
+      value: 628.557,
+      name: "molecularWeight",
     },
-    LessThanOrEqualTo: {
-      lte: {
-        value: 85,
-        name: "drugId",
-      },
+  },
+  LessThan: {
+    lt: {
+      value: 107,
+      name: "drugId",
     },
-    Between: {
-      between: {
-        from: 200,
-        to: 400,
-        name: "molecularWeight",
-      },
+  },
+  LessThanOrEqualTo: {
+    lte: {
+      value: 85,
+      name: "drugId",
     },
-    Contains: {
-      contains: {
-        value: "overexpressing*",
-        name: "preClinical",
-      },
+  },
+  Between: {
+    between: {
+      from: 200,
+      to: 400,
+      name: "molecularWeight",
     },
-    NotContains: {
-      notcontains: {
-        value: "Hortobagyi*",
-        name: "overview",
-      },
+  },
+  Contains: {
+    contains: {
+      value: "overexpressing*",
+      name: "preClinical",
     },
-  };
+  },
+  NotContains: {
+    notcontains: {
+      value: "Hortobagyi*",
+      name: "overview",
+    },
+  },
+};
   
-  module.exports = {
-    searchBody,
-  };
+module.exports = {
+  searchBody,
+};
   

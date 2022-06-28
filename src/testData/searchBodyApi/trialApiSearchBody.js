@@ -17,7 +17,7 @@ const searchBody = {
       name: "trialStudyKeywords",
     },
   },
-   /*IsOnly:        {
+  /*IsOnly:        {
         "IsOnly": {
             "value": "II",
             "name": "trialPhase"
