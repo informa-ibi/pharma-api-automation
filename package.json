@@ -5,10 +5,12 @@
   "main": "index.js",
   "author": "Citeline",
   "scripts": {
-    "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./report/report.json --require src/test/steps --tags @automated",
+    "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./reports/report.json --require src/test/steps --tags @automated",
     "test": "npm run cucumber src/test/features/**/*.feature || (exit 0)",
-    "report": "node report/reporterOptions.js",
-    "test_report": "npm run test && npm run report"
+    "report": "node reports/reporterOptions.js",
+    "test:report": "npm run test && npm run report",
+    "lint": "node node_modules/eslint/bin/eslint .",
+    "lint:fix": "node node_modules/eslint/bin/eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -17,5 +19,12 @@
   "dependencies": {
     "chai-things": "^0.2.0",
     "informa_framework": "github:informa-pharma/informa_framework"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.18.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-wdio": "^7.19.4"
   }
 }
