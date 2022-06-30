@@ -14,10 +14,10 @@ When(/^Send request to '(.*)' entity list endpoint$/, async (entity) => {
 });
 
 Then(/^Check that the items elements in the response are correct for the '(.*)' entity$/, async (entity) => {
-    expectChai(this.items).to.have.deep.members(searchListItemsData[entity], `The data for the [${entity}] entity should be correct.`);
+  expectChai(this.items).to.have.deep.members(searchListItemsData[entity], `The data for the [${entity}] entity should be correct.`);
 });
 
 Then(/^Check the response schema for the '(.*)' entity for the _list endpoint$/, async (entity) => {
-    expectChai(this.data).to.be.jsonSchema(jsonSchemaForListResponse, `Response JSON schema should be correct for the [${entity}] entity`);
-  });
+  expectChai(this.data).to.be.jsonSchema(jsonSchemaForListResponse, `Response JSON schema should be correct for the [${entity}] entity`);
+});
   
