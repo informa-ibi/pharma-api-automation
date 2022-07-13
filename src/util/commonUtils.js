@@ -21,9 +21,12 @@ function deleteWildcardSearchingSymbol(str) {
   return str.replace("*", "");
 }
 
+const GET_ENTITY_ID = (entity) => `${entity}Id`;
+
 module.exports = {
   getMultipleRandom,
   getThePercentageDifferenceBetween2Numbers,
   replaceTheLineBreakCharactersWithASpace,
   deleteWildcardSearchingSymbol,
+  GET_ENTITY_ID
 };
