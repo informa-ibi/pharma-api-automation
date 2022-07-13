@@ -21,7 +21,7 @@ When(/^Send a request to '(.*)' entity endpoint with random search parameter and
   $totalRecordCount = response.data.meta.totalRecordCount;
 });
 
-Then(/^Check that the data is sorted correctly and that it is displayed in the correct order - '(.*)'$/, async (order) => {
+Then(/^Check that the data is sorted correctly and that it is displayed in the correct order - '(.*)'$/, (order) => {
   const tempArray = [];
   const actualResponseBodyCount = $responseBodyItems.length - 1;
   const entityId = GET_ENTITY_ID(this.entity);
@@ -64,7 +64,7 @@ Then(/^Check that the data is sorted correctly and that it is displayed in the c
   expectChai(tempArray.length).to.equal(0, `For the [${this.entity}] entity for ids - [${tempArray.toString()}], should be sort by parameter [${this.randomSortParameter}]`);
 });
 
-Then(/^Check that the data is sorted correctly without specified order$/, async () => {
+Then(/^Check that the data is sorted correctly without specified order$/, () => {
   const tempArray = [];
   const actualResponseBodyCount = $responseBodyItems.length - 1;
   const entityId = GET_ENTITY_ID(this.entity);
@@ -86,11 +86,11 @@ Then(/^Check that the data is sorted correctly without specified order$/, async 
   expectChai(tempArray.length).to.equal(0, `For the [${this.entity}] entity for ids - [${tempArray.toString()}], should be sort by parameter [${this.randomSortParameter}]`);
 });
 
-Then(/^Check that the number of elements in the response is greater than zero for '(.*)'$/, async (entity) => {
+Then(/^Check that the number of elements in the response is greater than zero for '(.*)'$/, (entity) => {
   const itemsLength = $responseBodyItems.length;
   expectChai(itemsLength).to.be.gt(0, `Total number of elements should be greater than zero for [${entity}] entity`);
 });
 
-Then(/^Check that the total record count of elements in the response result is greater than zero for '(.*)'$/, async (entity) => {
+Then(/^Check that the total record count of elements in the response result is greater than zero for '(.*)'$/, (entity) => {
   expectChai($totalRecordCount).to.be.gt(0, `Total record count should be greater than zero for [${entity}] entity`);
 });

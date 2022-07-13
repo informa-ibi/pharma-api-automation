@@ -20,9 +20,9 @@ When(/^Send a request to '(.*)' entity endpoint with random search parameter and
   $totalRecordCount = response.data.meta.totalRecordCount;
 });
 
-Then(/^Check that the response elements are sorted by the random parameter and term for the '(.*)' entity$/, async (entity) => {
+Then(/^Check that the response elements are sorted by the random parameter and term for the '(.*)' entity$/, (entity) => {
   const unsortedItemIds = [];
-  const responseItems = await $responseBodyItems;
+  const responseItems = $responseBodyItems;
   const isValueArray = Array.isArray(responseItems[0][$randomSearchKey]);
   for (item of responseItems) {
     const tempValue = item[$randomSearchKey];
