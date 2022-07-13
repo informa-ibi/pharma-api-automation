@@ -27,6 +27,7 @@ BeforeAll(async () => {
   $commonAuthHeader = { Authorization: `Bearer ${access_token}` };
   $firstCommonAPIClient = new APIUtils(env.hostUrl, $commonAuthHeader);
   $secondCommonAPIClient = new APIUtils(env.hostUrl, $commonAuthHeader);
+  $sortAndOrderAPIClient = new APIUtils(env.hostUrl, $commonAuthHeader);
   $xmlCommonAPIClient = new APIUtils(env.hostUrl, { ...$commonAuthHeader, ...XML_HEADERS });
 
   await PostgresUtil.initConnection(configDB);

@@ -9,10 +9,18 @@ const FEED_ENTITY_ENDPOINT_CHANGES_COUNT_SINCE_QUERY = (entity, sinceData) => `/
 const FEED_ENTITY_ENDPOINT_CHANGES_SINCE_TYPE_QUERY = (entity, sinceData, type) => `/v1/feed/${entity}/changes/?since=${sinceData}&type=${type}`;
 const SEARCH_ENTITY_LIST_ENDPOINT = (entity) => `/v1/search/${entity}/list`;
 const SEARCH_ENTITY_LIST_PARAMETER_ENDPOINT = (entity, parameter) => `/v1/search/${entity}/list/${parameter}`;
+const SEARCH_PARAMETER_ENDPOINT = (parameter, term) => `?${parameter}=${term}`;
+const SORT_PARAMETER_ENDPOINT = (fieldName) => `&sort=${fieldName}`;
+const ORDER_PARAMETER_ENDPOINT = (order) => `&order=${order}`;
 
 const AUTH_TOKEN_ENDPOINT = "connect/token";
 
 const SEARCH_ENTITY_ENDPOINT = (entity) => `/v1/search/${entity}`;
+
+const ORDER_VALUES = {
+  Asc: "Asc",
+  Desc: "Desc",
+};
 
 module.exports = {
   FEED_ENTITY_ENDPOINT,
@@ -26,5 +34,9 @@ module.exports = {
   FEED_ENTITY_ENDPOINT_CHANGES_COUNT_SINCE_QUERY,
   FEED_ENTITY_ENDPOINT_CHANGES_SINCE_TYPE_QUERY,
   SEARCH_ENTITY_LIST_ENDPOINT,
-  SEARCH_ENTITY_LIST_PARAMETER_ENDPOINT
+  SEARCH_ENTITY_LIST_PARAMETER_ENDPOINT,
+  ORDER_VALUES,
+  SEARCH_PARAMETER_ENDPOINT,
+  SORT_PARAMETER_ENDPOINT,
+  ORDER_PARAMETER_ENDPOINT
 };
