@@ -4,6 +4,7 @@
   "description": "Tests for api endpoints",
   "main": "index.js",
   "author": "Citeline",
+  "license": "ISC",
   "scripts": {
     "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./reports/report.json --require src/test/steps --tags @automated",
     "test": "npm run cucumber src/test/features/**/*.feature || (exit 0)",
