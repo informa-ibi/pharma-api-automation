@@ -1,5 +1,5 @@
 {
-  "name": "pharma API automation",
+  "name": "pharma-api-automation",
   "version": "1.0.0",
   "description": "Tests for api endpoints",
   "main": "index.js",
