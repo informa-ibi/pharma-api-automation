@@ -7,6 +7,19 @@ const { ENTITIES } = require("../../constants/entities");
 const { SEARCH_PARAMETERS } = require("../../constants/apiSearchParameters");
 const { SORT_FIELDS } = require("../../constants/apiSortFields");
 
+When(/^Send a request to '(.*)' entity endpoint with random search parameter and with random sort parameter without order query$/, async (entity) => {
+  this.entity = entity;
+  const randomSearchData = getMultipleRandom(SEARCH_PARAMETERS[this.entity], 1)[0];
+  $randomSearchKey = Object.keys(randomSearchData)[0];
+  $randomSearchValue = getMultipleRandom(randomSearchData[$randomSearchKey], 1)[0];
+  $randomSortParameter = getMultipleRandom(SORT_FIELDS[this.entity], 1)[0];
+  const requestUrl = `${SEARCH_ENTITY_ENDPOINT(ENTITIES[entity])}${SEARCH_PARAMETER_ENDPOINT($randomSearchKey, $randomSearchValue)}${SORT_PARAMETER_ENDPOINT($randomSortParameter)}`;
+  const response = await $sortAndOrderAPIClient.getRequest(requestUrl);
+  $statusCode = response.status;
+  $responseBodyItems = response.data.items;
+  $totalRecordCount = response.data.meta.totalRecordCount;
+});
+
 When(/^Send a request to '(.*)' entity endpoint with random search parameter and with random sort parameter with '(.*)' order query$/, async (entity, order) => {
   this.entity = entity;
   this.order = order;

@@ -6,7 +6,7 @@ Feature: Search endpoint with sort and order query
         Then The API status code should be 200 - OK
         And Check that the number of elements in the response is greater than zero for '<entity>'
         And Check that the total record count of elements in the response result is greater than zero for '<entity>'
-        And Check that the response elements are sorted by the random parameter and term for the '<entity>' entity
+        And Check that the elements in the response match the search conditions by the random parameter and term for the '<entity>' entity
         And Check that the data is sorted correctly without specified order
         Examples:
             | entity       |
@@ -20,7 +20,7 @@ Feature: Search endpoint with sort and order query
         Then The API status code should be 200 - OK
         And Check that the number of elements in the response is greater than zero for '<entity>'
         And Check that the total record count of elements in the response result is greater than zero for '<entity>'
-        And Check that the response elements are sorted by the random parameter and term for the '<entity>' entity
+        And Check that the elements in the response match the search conditions by the random parameter and term for the '<entity>' entity
         And Check that the data is sorted correctly and that it is displayed in the correct order - '<order>'
         Examples:
             | entity       | order |
