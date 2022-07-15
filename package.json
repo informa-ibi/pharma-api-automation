@@ -1,9 +1,10 @@
 {
-  "name": "pharma API automation",
+  "name": "pharma-api-automation",
   "version": "1.0.0",
   "description": "Tests for api endpoints",
   "main": "index.js",
   "author": "Citeline",
+  "license": "ISC",
   "scripts": {
     "cucumber": "node node_modules/@cucumber/cucumber/bin/cucumber-js -f json:./reports/report.json --require src/test/steps --tags @automated",
     "test": "npm run cucumber src/test/features/**/*.feature || (exit 0)",
@@ -18,7 +19,7 @@
   },
   "dependencies": {
     "chai-things": "^0.2.0",
-    "informa_framework": "github:informa-pharma/informa_framework"
+    "informa_framework": "git+https://email_git_placeholder:token_git_placeholder@github.com/informa-pharma/informa_framework.git"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
