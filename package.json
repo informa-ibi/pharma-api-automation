@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "chai-things": "^0.2.0",
-    "informa_framework": "github:informa-pharma/informa_framework"
+    "informa_framework": "informa_framework_git_placeholder"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
