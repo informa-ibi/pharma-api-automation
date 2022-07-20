@@ -2,7 +2,7 @@
 Feature: Page size of an API response
 
   Scenario Outline: Send a request to [<entity>] and check that status code and check that the number of elements is default value
-    When Send request to '<entity>' entity common endpoint with default setting for the page size
+    When Send request to '<entity>' entity common feed endpoint with default setting for the page size
     Then The API status code should be 200 - OK
     And Expected that the number of elements will be equal to the standard value
 
@@ -18,7 +18,7 @@ Feature: Page size of an API response
       | organizationHierarchy |
 
   Scenario Outline: Send a request to [<entity>] and check that status code and page size [<pageSize>]
-    When Send request to '<entity>' entity common endpoint with page size equal to '<pageSize>'
+    When Send request to '<entity>' entity common feed endpoint with page size equal to '<pageSize>'
     Then The API status code should be 200 - OK
     And Expected that the number of elements to be equal to the expected value of '<pageSize>' elements
 
@@ -34,7 +34,7 @@ Feature: Page size of an API response
       | organizationHierarchy | 1225     |
 
   Scenario Outline: Send a request to [<entity>] and check that status code and check that the number of elements is not more than the maximum number
-    When Send request to '<entity>' entity common endpoint with page size equal to '<pageSize>'
+    When Send request to '<entity>' entity common feed endpoint with page size equal to '<pageSize>'
     Then The API status code should be 200 - OK
     And Expected that the number of elements will be equal to the max value
 

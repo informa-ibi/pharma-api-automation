@@ -1,5 +1,4 @@
-//TODO: Add feed meta section and search meta section
-const meta = {
+const metaForFeedEndpoint = {
   type: "object",
   properties: {
     statusCode: { type: "number" },
@@ -10,6 +9,21 @@ const meta = {
     queryUrl: { type: "string" },
   },
   required: ["statusCode", "message", "version", "schemaVersion", "generated", "queryUrl"],
+  additionalProperties: false,
+};
+
+const metaForSearchEndpoint = {
+  type: "object",
+  properties: {
+    statusCode: { type: "number" },
+    message: { type: "string" },
+    version: { type: "string" },
+    schemaVersion: { type: "string" },
+    generated: { type: "string" },
+    queryUrl: { type: "string" },
+    totalRecordCount: { type: "number" },
+  },
+  required: ["statusCode", "message", "version", "schemaVersion", "generated", "queryUrl", "totalRecordCount"],
   additionalProperties: false,
 };
 
@@ -44,9 +58,9 @@ const nextAndPreviousPagePagination = {
 const feedEndpointDefaultJsonSchema = {
   type: "object",
   properties: {
-    meta,
+    meta: metaForFeedEndpoint,
     pagination: nextPagePagination,
-    items: { type: "array", minItems: 1, uniqueItems: true }, //  items: { type: "array", minItems: 1, uniqueItems: true },
+    items: { type: "array", minItems: 1, uniqueItems: true }, 
   },
   required: ["meta", "pagination", "items"],
   additionalProperties: false,
@@ -55,7 +69,7 @@ const feedEndpointDefaultJsonSchema = {
 const feedEndpointNextAndPreviousPagePaginationJsonSchema = {
   type: "object",
   properties: {
-    meta,
+    meta: metaForFeedEndpoint,
     pagination: nextAndPreviousPagePagination,
     items: { type: "array", minItems: 1, uniqueItems: true },
   },
@@ -66,7 +80,40 @@ const feedEndpointNextAndPreviousPagePaginationJsonSchema = {
 const feedEndpointPreviousPagePaginationJsonSchema = {
   type: "object",
   properties: {
-    meta,
+    meta: metaForFeedEndpoint,
+    pagination: previousPagePagination,
+    items: { type: "array", minItems: 1, uniqueItems: true },
+  },
+  required: ["meta", "pagination", "items"],
+  additionalProperties: false,
+};
+
+const searchEndpointDefaultJsonSchema = {
+  type: "object",
+  properties: {
+    meta: metaForSearchEndpoint,
+    pagination: nextPagePagination,
+    items: { type: "array", minItems: 1, uniqueItems: true },
+  },
+  required: ["meta", "pagination", "items"],
+  additionalProperties: false,
+};
+
+const searchEndpointNextAndPreviousPagePaginationJsonSchema = {
+  type: "object",
+  properties: {
+    meta: metaForSearchEndpoint,
+    pagination: nextAndPreviousPagePagination,
+    items: { type: "array", minItems: 1, uniqueItems: true },
+  },
+  required: ["meta", "pagination", "items"],
+  additionalProperties: false,
+};
+
+const searchEndpointPreviousPagePaginationJsonSchema = {
+  type: "object",
+  properties: {
+    meta: metaForSearchEndpoint,
     pagination: previousPagePagination,
     items: { type: "array", minItems: 1, uniqueItems: true },
   },
@@ -78,4 +125,7 @@ module.exports = {
   feedEndpointDefaultJsonSchema,
   feedEndpointNextAndPreviousPagePaginationJsonSchema,
   feedEndpointPreviousPagePaginationJsonSchema,
+  searchEndpointDefaultJsonSchema,
+  searchEndpointNextAndPreviousPagePaginationJsonSchema,
+  searchEndpointPreviousPagePaginationJsonSchema,
 };
