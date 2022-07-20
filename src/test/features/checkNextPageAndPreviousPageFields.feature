@@ -16,7 +16,7 @@ Feature: NextPage and PreviousPage fields in response body for search and feed e
             | drug                  | feed        |
             | trial                 | feed        |
             | investigator          | feed        |
-            | organization          | feed3       |
+            | organization          | feed        |
             | drugCompany           | feed        |
             | drugProgram           | feed        |
             | drugTrends            | feed        |
