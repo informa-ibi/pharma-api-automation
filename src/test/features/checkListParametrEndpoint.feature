@@ -1,5 +1,5 @@
 @automated
-Feature: Check /list/parameter endpoint
+Feature: Check search/{entity}/listlist endpoint
 
   Scenario Outline: Send a request to [<entity>] and check that status code and list/parameter endpoint has correct JSON schema
     When Send request to '<entity>' entity to _list_parameter endpoint for random parameter
