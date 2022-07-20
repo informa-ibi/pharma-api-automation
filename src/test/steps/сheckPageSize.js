@@ -5,14 +5,14 @@ const { DEFAULT_NUMBER_OF_ELEMENTS_IN_THE_RESPONSE, MAX_NUMBER_OF_ELEMENTS_IN_TH
 const { FEED_ENTITY_ENDPOINT, FEED_ENTITY_ENDPOINT_PAGESIZE_QUERY } = require("../../constants/apiEndpoints");
 const { LONG_REQUEST_EXECUTION_TIME } = require("../../constants/timeouts");
 
-When(/^Send request to '(.*)' entity common endpoint with default setting for the page size$/, async (entity) => {
+When(/^Send request to '(.*)' entity common feed endpoint with default setting for the page size$/, async (entity) => {
   const url = FEED_ENTITY_ENDPOINT(ENTITIES[entity]);
   const response = await $firstCommonAPIClient.getRequest(url);
   $statusCode = response.status;
   this.dataItems = response.data.items;
 });
 
-When(/^Send request to '(.*)' entity common endpoint with page size equal to '(.*)'$/, async (entity, pagesize) => {
+When(/^Send request to '(.*)' entity common feed endpoint with page size equal to '(.*)'$/, async (entity, pagesize) => {
   const url = FEED_ENTITY_ENDPOINT_PAGESIZE_QUERY(ENTITIES[entity], pagesize);
   const config = { timeout: LONG_REQUEST_EXECUTION_TIME };
   const response = await $firstCommonAPIClient.getRequest(url, config);
