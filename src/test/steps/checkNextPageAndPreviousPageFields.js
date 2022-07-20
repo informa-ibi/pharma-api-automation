@@ -113,7 +113,7 @@ function getApiEndpoint(conditional) {
   case "feed": return "feed";
   case "search": return "search";
   default:
-    expectChai.fail(`The condition [${conditional}]  should be "feed"" or "search"`);
+    expectChai.fail(`The condition [${conditional}]  should be "feed" or "search"`);
     break;
   }
 }
