@@ -1,5 +1,5 @@
 @automated
-Feature: Check /list endpoint
+Feature: Check search/{entity}/listlist endpoint
 
     Scenario Outline: Send a request to [<entity>] and check that status code and list endpoint has correct JSON schema and items data
         When Send request to '<entity>' entity list endpoint
