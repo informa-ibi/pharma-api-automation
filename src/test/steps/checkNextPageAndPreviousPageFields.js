@@ -37,7 +37,7 @@ When(/^Send a request to '(.*)' entity common search endpoint with random search
   this.searchResponseBody = response.data;
 });
 
-Then(/^Move to the nextPage link for the '(.*)' entity for '(.*)' endpoint$/, async (entity, apiEndpoint) => {
+Then(/^Move to the nextPage link for the '(.*)' endpoint$/, async (apiEndpoint) => {
   const actualApiEndpoint = getApiEndpoint(apiEndpoint);
   const actualResponseData = actualApiEndpoint === FEED_VALUE ? $feedResponseBody : this.searchResponseBody;
   const nextPageCommonUrl = actualResponseData.pagination.nextPage;
@@ -47,7 +47,7 @@ Then(/^Move to the nextPage link for the '(.*)' entity for '(.*)' endpoint$/, as
   this.nextPageResponseData = response.data;
 });
 
-Then(/^Move to the previousPage link for the '(.*)' entity for '(.*)' endpoint$/, async (entity, apiEndpoint) => {
+Then(/^Move to the previousPage link$/, async () => {
   const previousPageCommonUrl = this.nextPageResponseData.pagination.previousPage;
   const previousPageUrl = previousPageCommonUrl.replace($host, "").replace(HTTP_PART, "");
   const response = await $feedEndpointNextPreviousPageAPIClient.getRequest(previousPageUrl);
